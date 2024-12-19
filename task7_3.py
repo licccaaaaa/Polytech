@@ -12,7 +12,7 @@ def check_input(array):
     if time[0].isdigit() == False or time[1].isdigit() == False:
         return False
 
-    if (int(time[0]) < 0 or int(time[0]) > 24 or int(time[1]) < 0 or int(time[1]) > 60):
+    if (int(time[0]) < 0 or int(time[0]) >= 24 or int(time[1]) < 0 or int(time[1]) >= 60):
         return False
 
     if type(array[1]) != int or array[1] < 0:
@@ -31,7 +31,7 @@ def calculate_time(array):
     n = array[1]
     time = [time[0] + n, time[1] + n]
     if time[1] >= 60:
-        time[0] += 1
+        time[0] += time[1] // 60
         time[1] = time[1] % 60
 
     time[0] = time[0] % 24
